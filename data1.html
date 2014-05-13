@@ -8,6 +8,8 @@
 
     // Wait for device API libraries to load
     //
+    var me = "Dania";
+    var person = "John Doe";
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
@@ -35,7 +37,7 @@
     // Transaction success callback
     //
     function successCB() {
-        alert("success!");
+        alert("success! " +me);
     }
 
     </script>
