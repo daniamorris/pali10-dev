@@ -10,6 +10,14 @@
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
+    // device APIs are available
+    //
+    var me = "Dania";
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
     // Populate the database
     //
     function populateDB(tx) {
@@ -19,46 +27,22 @@
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
     }
 
-    // Query the database
-    //
-    function queryDB(tx) {
-        tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
-    }
-
-    // Query the success callback
-    //
-    function querySuccess(tx, results) {
-        var len = results.rows.length;
-        console.log("DEMO table: " + len + " rows found.");
-        for (var i=0; i<len; i++){
-            console.log("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
-        }
-    }
-
     // Transaction error callback
     //
     function errorCB(err) {
-        console.log("Error processing SQL: "+err.code);
+        alert("Error processing SQL: "+err);
     }
 
     // Transaction success callback
     //
     function successCB() {
-        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-        db.transaction(queryDB, errorCB);
-    }
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
-        db.transaction(populateDB, errorCB, successCB);
+        alert("success! " +me);
     }
 
     </script>
   </head>
   <body>
     <h1>Example</h1>
-    <p>Database</p>
+    <p>SQLTransaction</p>
   </body>
 </html>
