@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Log your run using Geolocation and Google Maps API</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Palisades Will Rogers 5k and 10K July 4th Run</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
@@ -78,13 +84,9 @@
     </script>
     <style type="text/css">
       #map {
-        width: 500px;
+       /* width: 500px;
         height: 400px;
-        margin-top: 10px;
-      }
-    </style>
-    <style>
-      #map {
+        margin-top: 10px;*/
         height: 200px;
         margin: 0px;
         padding: 0px
@@ -92,8 +94,36 @@
     </style>
   </head>
   <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Palisades10k.com</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="train.html">Train</a></li>
+            <li><a href="score.html">Score</a></li>
+            <li><a href="race.html">Race</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
     <h1>Log a Run</h1>
     <div id="map"></div>
     <p id="error"></p>
+    </div>
+    </div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
