@@ -39,6 +39,12 @@
         alert("success! " +me);
     }
 
+tx.executeSql('SELECT * FROM DEMO', [], function (tx, results) {
+  var len = results.rows.length, i;
+  for (i = 0; i < len; i++) {
+    alert(results.rows.item(i).text);
+  }
+
     </script>
   </head>
   <body>
