@@ -26,6 +26,12 @@
         tx.executeSql('CREATE TABLE IF NOT EXISTS GOALS (id unique, data)');
         tx.executeSql('INSERT INTO GOALS (id, data) VALUES (1, "First row")');
         tx.executeSql('INSERT INTO GOALS (id, data) VALUES (?, ?)', [id, userValue]);
+        tx.executeSql('SELECT * FROM GOALS', [], function (tx, results) {
+		  var len = results.rows.length, i;
+		  for (i = 0; i < len; i++) {
+			alert(results.rows.item(i).text);
+		  }
+
     }
 
     // Transaction error callback
