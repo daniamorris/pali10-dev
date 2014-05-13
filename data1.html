@@ -12,7 +12,8 @@
 
     // device APIs are available
     //
-    var me = "Dania";
+    var userValue = "Dania";
+    var id = "16";
     function onDeviceReady() {
         var db = window.openDatabase("Database", "1.0", "Palisades 10k", 200000);
         db.transaction(populateDB, errorCB, successCB);
@@ -24,7 +25,7 @@
         tx.executeSql('DROP TABLE IF EXISTS GOALS');
         tx.executeSql('CREATE TABLE IF NOT EXISTS GOALS (id unique, data)');
         tx.executeSql('INSERT INTO GOALS (id, data) VALUES (1, "First row")');
-        tx.executeSql('INSERT INTO GOALS (id, data) VALUES (2, "Second row")');
+        tx.executeSql('INSERT INTO GOALS (id, data) VALUES (?, ?)', [id, userValue]);
     }
 
     // Transaction error callback
@@ -36,7 +37,7 @@
     // Transaction success callback
     //
     function successCB() {
-        alert("success! " +me);
+        alert("success! " +userValue);
     }
 
     </script>
