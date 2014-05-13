@@ -10,8 +10,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
     <style>
-      #map-canvas {
-        height: 200px;
+      #map {
+        height: 300px;
         margin: 0px;
         padding: 0px
       }
@@ -21,7 +21,8 @@
     sensor (a GPS locator) to determine the user's location.
     See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuyiUtPFwGm2sW-azciNH2-WBg-lI3UTk&sensor=true"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -92,13 +93,6 @@
         });
       });
     </script>
-    <style type="text/css">
-      #map {
-        width: 500px;
-        height: 400px;
-        margin-top: 10px;
-      }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -132,19 +126,10 @@
 
       <div class="starter-template">
 		<h2>Log a Run</h2>
+		<div id="map"></div>
+		<p id="error"></p>
 		<form role="form">
-			<button type="button" class="btn btn-default btn-lg">
-			<span class="glyphicon glyphicon-play"></span> Start			</button>
-			<button type="button" class="btn btn-default btn-lg">
-			<span class="glyphicon glyphicon-pause"></span> Pause			</button>
-			<button type="button" class="btn btn-default btn-lg">
-			<span class="glyphicon glyphicon-stop"></span> Stop			</button>
-
-			<p>&nbsp;</p>
 		  <div class="form-group">
-    <h1>Create a polyline</h1>
-    <div id="map"></div>
-    <p id="error"></p>
 			<input type="number" class="form-control" id="milage" placeholder="Enter milage in miles 4.5">
 			</div>
 			<div class="form-group">
@@ -165,7 +150,7 @@
 			</div>
 			<p>&nbsp;</p>
 			<button type="button" class="btn btn-default btn-lg">
-			<span class="glyphicon glyphicon-star"></span> Save and log Training			</button>
+			<span class="glyphicon glyphicon-star"></span> Save and log Training</button>
 		</form>
 		<p align="center"><img src="img/logo.png" alt="palisades10k" width="170" height="200"></p>
      </div>
@@ -182,8 +167,6 @@
 			</script>. All Rights Reserved. Palisades/Will Rogers 5K &amp; 10K Run</p>
 		</div>
 	</div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
