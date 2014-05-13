@@ -14,17 +14,17 @@
     //
     var me = "Dania";
     function onDeviceReady() {
-        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        var db = window.openDatabase("Database", "1.0", "Palisades 10k", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
     // Populate the database
     //
     function populateDB(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS DEMO');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+        tx.executeSql('DROP TABLE IF EXISTS GOALS');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GOALS (id unique, data)');
+        tx.executeSql('INSERT INTO GOALS (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO GOALS (id, data) VALUES (2, "Second row")');
     }
 
     // Transaction error callback
@@ -38,12 +38,6 @@
     function successCB() {
         alert("success! " +me);
     }
-
-tx.executeSql('SELECT * FROM DEMO', [], function (tx, results) {
-  var len = results.rows.length, i;
-  for (i = 0; i < len; i++) {
-    alert(results.rows.item(i).text);
-  }
 
     </script>
   </head>
