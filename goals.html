@@ -23,8 +23,8 @@
 
 	function onDeviceReady() {
 		console.log(device.cordova);
-	var deviceID = device.uuid;
-	alert("success! " +deviceID);
+		var deviceID = device.uuid;
+		alert("success! " +deviceID);
 	}
 
     </script>
@@ -56,9 +56,10 @@
 
       <div class="starter-template">
 		<h2>Set Goals</h2>
-		<form role="form">
-			<div class="form-group">
-			<select class="form-control">
+		<form action="goalsdata.php" method="get" name="mygoals" id="mygoals" role="form">
+		<input type="hidden" id="uuid" value="deviceID">
+		  <div class="form-group">
+			<select name="goals" class="form-control" id="goals">
 			<option>Train this many miles by race day:</option>
 			<option>Train this many hours by race day:</option>
 			<option>Increase my avarage speed</option>
@@ -69,10 +70,10 @@
 			</div>
 			<div class="input-group">
 			<span class="input-group-addon">notes</span>
-			<textarea class="form-control" rows="3"></textarea>
+			<textarea name="notes" rows="3" class="form-control"></textarea>
 			</div>
 			<p>&nbsp;</p>
-			<button type="submit" class="btn btn-default">Submit Goals</button>
+			<button type="submit" name="submit" value="insertgoals" class="btn btn-default">Submit Goals</button>
 		</form>
 		<p>&nbsp;</p>
 		<p align="center"><img src="race-images/_MG_0432.jpg" class="img-thumbnail" height="133" width="200" alt="Palisades Will Rogers" /></p>

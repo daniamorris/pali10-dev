@@ -117,10 +117,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<a href="running.html" class="btn btn-primary btn-lg btn-block" role="button">Log a Run</a>
 		</p>
 		<h2>Create  a Training Event</h2>
-		<form role="form">
+		<form action="goalsdata.php" method="get" name="tevent" id="tevent" role="form">
 			<div class="form-group">              
 				<p class="help-block">Enter the what, when, and where of your training event:</p>
-				<select class="form-control">
+				<select name="details" class="form-control" id="details">
 				<option>Training run:</option>
 				<option>Breakfast run:</option>
 				<option>Beer run:</option>
@@ -130,19 +130,19 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon">notes</span>
-				<textarea class="form-control" rows="3"></textarea>
+				<textarea name="moreinfo" class="form-control" rows="3"></textarea>
 			</div>
 			<p>&nbsp;</p>
 			<div class="form-group">
-				<input type="datetime" class="form-control" id="datetime" placeholder="Enter time in datetime format 1:23:40">
+				<input name="date" type="datetime" class="form-control" id="date" placeholder="Enter time in datetime format 1:23:40">
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
-				<input type="text" class="form-control" id="where" placeholder="Enter your meeting spot">
+				<input type="text" class="form-control" name="location" placeholder="Enter your meeting spot">
 			</div>
 			<div id="map-canvas"></div>
 			<p>&nbsp;</p>
-			<button type="submit" class="btn btn-default">Submit Training Event</button>
+			<button type="submit" name="submit" value="trainevent" class="btn btn-default">Submit Training Event</button>
 		</form>
 		<p align="center"><img src="race-images/_MG_0455.jpg" height="133" width="200" class="img-thumbnail" alt="July 4th" /> <img src="race-images/_MG_0432.jpg" class="img-thumbnail" height="133" width="200" alt="Palisades Will Rogers" /> <img src="race-images/_MG_0563.jpg" height="133" width="200" class="img-thumbnail" alt="5k 10k Run" /></p>
 		<p align="center"><img src="img/logo.png" alt="palisades10k" width="170" height="200"></p>
