@@ -91,7 +91,7 @@
 		//alert("success! " +deviceID);
 	}
 
-		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: "b710c14d6a29be70" }, function( data ) {
+		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
 		alert( "Load was performed." );
 		});
