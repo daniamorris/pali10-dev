@@ -48,6 +48,7 @@
 		<a href="log.html" class="btn btn-primary btn-lg btn-block" role="button">Log Training</a>
 		</p>
 		<h2>SCORE BOARD</h2>
+		<div class=result></div>
 		<p class="text-left"><b><span class="glyphicon glyphicon-star"></span> Stars</b>: 10</p>
 		<p class="text-left"><b>Total milage</b>: 20 miles</p>
 		<p class="text-left"><b>Total time</b>: 3hr 5min 20 sec</p>
@@ -62,6 +63,7 @@
      </div>
 
     </div><!-- /.container -->
+
 	<div id="footer">
 		<div class="container">
 			<p class="text-muted">Copyright &copy; 2000-<script language=Javascript>
@@ -78,9 +80,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	<script>
-		$.get( "scoreboard.txt", function( data ) {
-		alert( "Data Loaded: " + data );
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+ 	<script type="text/javascript" charset="utf-8">
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
+		//alert("success! " +deviceID);
+	}
+
+		$.get( "scoreboard.php", { myuuid: "b710c14d6a29be70" }, function( data ) {
+		$( ".result" ).html( data );
+		alert( "Load was performed." );
 		});
 	</script>
   </body>
