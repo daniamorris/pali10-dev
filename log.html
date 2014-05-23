@@ -65,6 +65,9 @@
       </div>
 
     </div><!-- /.container -->
+
+ 	<div id="some_page_id" data-role="content"></div>
+
 	<div id="footer">
 		<div class="container">
 			<p class="text-muted">Copyright &copy; 2000-<script language=Javascript>
@@ -81,5 +84,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+ <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<script>
+	$('#some_page_id').bind('pageshow', function () {
+		$.get('scoreboard.txt', function (data) {
+			$(this).find('div[data-role="content"]').append(data);
+		});
+	});
+	</script>
   </body>
 </html>

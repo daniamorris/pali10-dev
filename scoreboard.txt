@@ -1,0 +1,17 @@
+﻿Stars: 10
+
+Total milage: 20 miles
+
+Total time: 3hr 5min 20 sec
+
+Avarage MPR: 8.2 miles per hour
+
+Top MPR: 8.2 miles per hour
+
+GOALS
+
+Goal 1: Complete training sessions per week: 3
+
+Goal 2: Train this many miles by race day: 40
+
+Goal 3: Increase my avarage speed by .5 MPH over the next month
