@@ -11,5 +11,8 @@ try {
 }
 $DDMdata = new DDMmobil($dbh);
 $DDMdata->scoreboard($myuuid);
+echo '<hr>';
+$DDMdata->starcount($myuuid);
+$DDMdata->milage($myuuid);
 echo "you are here without errors";
 ?>
