@@ -26,10 +26,8 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Palisades10k.com</a>
-        </div>
+            <span class="icon-bar"></span>          </button>
+          <a class="navbar-brand" href="#">Palisades10k.com</a>        </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="train.html">Train</a></li>
@@ -44,14 +42,16 @@
 
       <div class="starter-template">
 		<h2>Log Training</h2>
-		<form action="goalsdata.php" method="get" name="mylog" id="mylog" role="form">
+		<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mylog" id="mylog" role="form">
 			<div class="form-group">
 			<input name="milage" type="number" step=".1" class="form-control" id="milage" placeholder="Enter milage in miles 4.5">
 			</div>
 			<div class="form-group">
-			<input name="timeframe" type="datetime" class="form-control" id="timeframe" placeholder="Enter time in datetime format 1:23:40">
+			<input name="hours" type="number" class="form-control" id="hours" placeholder="Enter time in hours">
+			<input name="minutes" type="number" class="form-control" id="minutes" placeholder="Enter time in minutes">
+			<input name="seconds" type="number" class="form-control" id="seconds" placeholder="Enter time in seconds">
 			</div>
-			<div class="checkbox">
+		  <div class="checkbox">
 			<label>
 			<input name="stars" type="checkbox" id="stars" value="1"> 
 			I completed a goal</label>
@@ -63,7 +63,6 @@
 		<p align="center"><img src="race-images/_MG_0563.jpg" height="133" width="200" class="img-thumbnail" alt="5k 10k Run" /></p>
 		<p align="center"><img src="img/logo.png" alt="palisades10k" width="170" height="200"></p>
       </div>
-
     </div><!-- /.container -->
 
  	<div id="some_page_id" data-role="content"></div>
@@ -84,13 +83,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
- <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-	<script>
-	$('#some_page_id').bind('pageshow', function () {
-		$.get('scoreboard.txt', function (data) {
-			$(this).find('div[data-role="content"]').append(data);
-		});
-	});
-	</script>
   </body>
 </html>

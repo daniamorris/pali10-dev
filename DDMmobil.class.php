@@ -49,7 +49,7 @@ class DDMmobil
       $stmt->execute();
       
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Stars:</b> %s</p>", $row["SUM(stars)"]);
+		printf("<p><b><span class='glyphicon glyphicon-star'></span> Stars:</b> %s</p>", $row["SUM(stars)"]);
 		}
 		
     }
@@ -103,12 +103,8 @@ class DDMmobil
       $stmt->bindParam(':goals', $goals);
       $stmt->bindParam(':notes', $notes);
       $stmt->execute();
-      /*
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Total milage:</b> %s</p>", $row["SUM(milage)"]);
-		}
-		*/
-		echo "goals inserted";
+		echo '<div class="container"><h3 class="center-block">Your goal has been added!</h3></div>';
+		include 'goals.html';
     }
     
 	catch (PDOException $e)
@@ -121,6 +117,94 @@ class DDMmobil
 	echo '<div class="clear"> </div>';
 
   }
+
+   public function viewgoals($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT * FROM mygoals WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+      $b = 1;
+      echo '<p><b>GOALS</b></p>';
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		printf("<p><b>Goal $b:</b> %s %s</p>", $row["goals"], $row["notes"]);
+		$b++; 
+		}
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
+   public function logtrain($myuuid, $hours, $minutes, $seconds, $milage, $stars)
+  {
+
+    try
+    {
+      $sql = "INSERT INTO mytraining (id,uuid,hours,minutes,seconds,milage,stars) VALUES (NULL, :myuuid, :hours, :minutes, :seconds, :milage, :stars)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->bindParam(':hours', $hours);
+      $stmt->bindParam(':minutes', $minutes);
+      $stmt->bindParam(':seconds', $seconds);
+      $stmt->bindParam(':milage', $milage);
+      $stmt->bindParam(':stars', $stars);
+      $stmt->execute();
+		echo '<div class="container"><h3 class="center-block">Your training has been added!</h3></div>';
+		include 'log.html';
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
+   public function logevent($myuuid, $date, $location, $details, $moreinfo)
+  {
+
+    try
+    {
+      $sql = "INSERT INTO events (id,uuid,date,location,details,moreinfo) VALUES (NULL, :myuuid, :date, :location, :details, :moreinfo)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->bindParam(':date', $date);
+      $stmt->bindParam(':location', $location);
+      $stmt->bindParam(':details', $details);
+      $stmt->bindParam(':moreinfo', $moreinfo);
+      $stmt->execute();
+		echo '<div class="container"><h3 class="center-block">Your training event has been added!</h3></div>';
+		echo $myuuid;
+		include 'train.html';
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
 
 }
 
