@@ -47,7 +47,7 @@
           var map = new google.maps.Map(document.getElementById("map"), myOptions);
  
          // Uncomment this block if you want to set a path
- /*
+ 
           // Create the polyline's points
           for(var i = 0; i < 5; i++) {
             // Create a random point using the user current position and a random generated number.
@@ -60,18 +60,23 @@
               )
             );
           }
- */
+
+//Dania create a stop button that clears the data input
+
+
           // Create the array that will be used to fit the view to the points range and
           // place the markers to the polyline's points
           var latLngBounds = new google.maps.LatLngBounds();
           for(var i = 0; i < path.length; i++) {
             latLngBounds.extend(path[i]);
             // Place the marker
+            /*
             new google.maps.Marker({
               map: map,
               position: path[i],
               title: "Point " + (i + 1)
             });
+           */
           }
           // Creates the polyline object
           var polyline = new google.maps.Polyline({
@@ -92,6 +97,9 @@
           timeout: 10 * 1000 // 10 seconds
         });
       });
+      $( "#target" ).click(function() {
+alert( "Handler for .click() called." );
+});
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -126,7 +134,7 @@
 
       <div class="starter-template">
 		<h2>Log a Run</h2>
-			<button type="button" class="btn btn-default btn-lg">
+			<button id ="target" type="button" class="btn btn-default btn-lg">
 			<span class="glyphicon glyphicon-play"></span> Start			</button>
 			<button type="button" class="btn btn-default btn-lg">
 			<span class="glyphicon glyphicon-pause"></span> Pause			</button>
