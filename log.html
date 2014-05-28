@@ -9,7 +9,19 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+ 	<script type="text/javascript" charset="utf-8">
 
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
+		//alert("success! " +deviceID);
+		$('input[name="myuuid"]').val(deviceID);
+	}
+
+    </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,6 +55,7 @@
       <div class="starter-template">
 		<h2>Log Training</h2>
 		<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mylog" id="mylog" role="form">
+			<input type="hidden" name="myuuid">
 			<div class="form-group">
 			<input name="milage" type="number" step=".1" class="form-control" id="milage" placeholder="Enter milage in miles 4.5">
 			</div>
