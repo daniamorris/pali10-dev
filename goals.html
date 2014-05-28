@@ -25,6 +25,7 @@
 		console.log(device.cordova);
 		var deviceID = device.uuid;
 		//alert("success! " +deviceID);
+		$('input[name="myuuid"]').val(deviceID);
 	}
 
     </script>
@@ -57,7 +58,7 @@
       <div class="starter-template">
 		<h2>Set Goals</h2>
 		<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals" id="mygoals" role="form">
-		<input type="hidden" id="uuid" value="deviceID">
+		<input type="hidden" name="myuuid">
 		  <div class="form-group">
 			<select name="goals" class="form-control" id="goals">
 			<option>Train this many miles by race day:</option>

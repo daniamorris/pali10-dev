@@ -79,8 +79,7 @@
 	function onDeviceReady() {
 		console.log(device.cordova);
 		var deviceID = device.uuid;
-		//alert("success! " +deviceID);
-	
+		//alert("success! " +deviceID);	
 
 		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
