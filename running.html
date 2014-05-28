@@ -31,6 +31,7 @@
           $("#error").text("Your browser doesn't support the Geolocation API");
           return;
         }
+        
         // Save the positions' history
         var path = [];
  
@@ -47,7 +48,7 @@
           var map = new google.maps.Map(document.getElementById("map"), myOptions);
  
          // Uncomment this block if you want to set a path
- /*
+/*
           // Create the polyline's points
           for(var i = 0; i < 5; i++) {
             // Create a random point using the user current position and a random generated number.
@@ -62,6 +63,7 @@
           }
 */
 //Dania create a stop button that clears the data input
+
 
 
           // Create the array that will be used to fit the view to the points range and
@@ -94,7 +96,7 @@
         },
         {
           enableHighAccuracy: true,
-          timeout: 10 * 1000 // 10 seconds
+          timeout: 20 * 1000 // 20 seconds
         });
       });
 
@@ -178,7 +180,7 @@
 <!--
 function sayHello() {
    alert("Hello World"),
-   navigator.geolocation.clearWatch(id);
+   navigator.geolocation.clearWatch();
 }
 //-->
 </script>
