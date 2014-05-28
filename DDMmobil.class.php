@@ -43,7 +43,7 @@ class DDMmobil
 
     try
     {
-      $sql = "SELECT SUM(stars) FROM scoreboard WHERE uuid=:myuuid";
+      $sql = "SELECT SUM(stars) FROM mytraining WHERE uuid=:myuuid";
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':myuuid', $myuuid);
       $stmt->execute();
@@ -70,7 +70,7 @@ class DDMmobil
 
     try
     {
-      $sql = "SELECT SUM(milage) FROM scoreboard WHERE uuid=:myuuid";
+      $sql = "SELECT SUM(milage) FROM mytraining WHERE uuid=:myuuid";
       $stmt = $this->db->prepare($sql);
       $stmt->bindParam(':myuuid', $myuuid);
       $stmt->execute();
