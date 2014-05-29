@@ -147,6 +147,58 @@ class DDMmobil
 
   }
 
+   public function removegoals($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT * FROM mygoals WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+      $b = 1;
+      echo '<p><b>GOALS</b></p>';
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Goal $b:</b> %s %s</p>", $row["id"], $row["goals"], $row["notes"]);
+		$b++; 
+		}
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+    }
+
+   public function removegoals2($id)
+  {
+
+    try
+    {
+      $sql = "DELETE FROM mygoals WHERE id=:id";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':id', $id);
+      $stmt->execute();
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
    public function logtrain($myuuid, $hours, $minutes, $seconds, $milage, $stars)
   {
 
@@ -190,7 +242,7 @@ class DDMmobil
       $stmt->bindParam(':moreinfo', $moreinfo);
       $stmt->execute();
 		echo '<div class="container"><h3 class="center-block">Your training event has been added!</h3></div>';
-		echo $myuuid;
+		//echo $myuuid;
 		include 'train.html';
     }
     

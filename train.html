@@ -16,7 +16,20 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+ 	<script type="text/javascript" charset="utf-8">
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
+		//alert("success! " +deviceID);
+		$('input[name="myuuid"]').val(deviceID);
+	}
+
+    </script>
+ </head>
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -48,6 +61,7 @@
 		</p>
 		<h2>Create  a Training Event</h2>
 		<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="tevent" id="tevent" role="form">
+		<input type="hidden" name="myuuid">
 			<div class="form-group">              
 				<p class="help-block">Enter the what, when, and where of your training event:</p>
 				<select name="details" class="form-control" id="details">

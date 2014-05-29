@@ -15,6 +15,7 @@ $date = $_GET['date'];
 $location = $_GET['location'];
 $details = $_GET['details'];
 $moreinfo = $_GET['moreinfo'];
+$id = $_GET['id'];
 
 try {
     $dbh = new PDO($dsn, $user, $password);
@@ -36,6 +37,14 @@ $DDMdata->logtrain($myuuid, $hours, $minutes, $seconds, $milage, $stars);
 //insert event http://palisades10k.com/app/train.html
 if (isset($_GET['submit']) && $_GET['submit'] == 'trainevent') {
 $DDMdata->logevent($myuuid, $date, $location, $details, $moreinfo);
+}
+
+//insert event http://palisades10k.com/app/train.html
+if (isset($_GET['submit']) && $_GET['submit'] == 'removegoals') {
+	foreach ($id as $mygoal) {
+		$DDMdata->removegoals2($mygoal);
+	}
+	include 'goals.html';
 }
 
 ?>
