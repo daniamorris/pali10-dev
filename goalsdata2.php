@@ -44,7 +44,8 @@ if (isset($_GET['submit']) && $_GET['submit'] == 'removegoals') {
 	foreach ($id as $mygoal) {
 		$DDMdata->removegoals2($mygoal);
 	}
-	include 'goals.html';
+	echo 'Your goal was removed';
+	include 'http://palisades10k.com/app/goals.html';
 }
 
 ?>
