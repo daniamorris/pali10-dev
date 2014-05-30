@@ -104,7 +104,7 @@ class DDMmobil
       $stmt->bindParam(':notes', $notes);
       $stmt->execute();
 		echo '<div class="container"><h3 class="center-block">Your goal has been added!</h3></div>';
-		include 'http://palisades10k.com/app/goals.html';
+		include 'goals.html';
     }
     
 	catch (PDOException $e)
@@ -214,7 +214,7 @@ class DDMmobil
       $stmt->bindParam(':stars', $stars);
       $stmt->execute();
 		echo '<div class="container"><h3 class="center-block">Your training has been added!</h3></div>';
-		include 'http://palisades10k.com/app/log.html';
+		include 'log.html';
     }
     
 	catch (PDOException $e)
@@ -243,7 +243,7 @@ class DDMmobil
       $stmt->execute();
 		echo '<div class="container"><h3 class="center-block">Your training event has been added!</h3></div>';
 		//echo $myuuid;
-		include 'http://palisades10k.com/app/train.html';
+		include 'train.html';
     }
     
 	catch (PDOException $e)

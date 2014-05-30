@@ -44,64 +44,10 @@
 
       <div class="starter-template">
 		<p>
-		<button id="goals1" type="button" class="btn btn-primary btn-lg btn-block">Set Goals</button>
-		<button id="goals2" type="button" class="btn btn-primary btn-lg btn-block">Remove Goals</button>
-		<button id="train1" type="button" class="btn btn-primary btn-lg btn-block">Log Training</button>
+		<a href="goals.html" class="btn btn-primary btn-lg btn-block" role="button">Set Goals</a>
+		<a href="goals-remove.html" class="btn btn-primary btn-lg btn-block" role="button">Remove Goals</a>
+		<a href="log.html" class="btn btn-primary btn-lg btn-block" role="button">Log Training</a>
 		</p>
-		<div id="showgoals" style="display: none">
-			<h2>Set Goals</h2>
-			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals" id="mygoals" role="form">
-			<input type="hidden" name="myuuid">
-			  <div class="form-group">
-				<select name="goals" class="form-control" id="goals">
-				<option>Train this many miles by race day:</option>
-				<option>Train this many hours by race day:</option>
-				<option>Increase my avarage speed</option>
-				<option>Complete training sessions per week:</option>
-				<option>Train with other runners</option>
-				<option>Other:</option>
-				</select>
-				</div>
-				<div class="input-group">
-				<span class="input-group-addon">notes</span>
-				<textarea name="notes" rows="3" class="form-control"></textarea>
-				</div>
-				<p>&nbsp;</p>
-				<button type="submit" name="submit" value="insertgoals" class="btn btn-default">Submit Goals</button>
-			</form>
-		</div>
-		<div id="removeg" style="display: none">
-			<h2>Remove Goals</h2>
-			<p>Select the checkbox and click the Delete button to remove goals.</p>
-			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals2" id="mygoals2" role="form">
-			<input type="hidden" name="myuuid">
-			<div class=resultgmove></div>
-				<p>&nbsp;</p>
-				<button type="submit" name="submit" value="removegoals" class="btn btn-default">Delete Selected Goals</button>
-			</form>
-		</div>
-		<div id="logt" style="display: none">
-			<h2>Log Training</h2>
-			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mylog" id="mylog" role="form">
-				<input type="hidden" name="myuuid">
-				<div class="form-group">
-				<input name="milage" type="text" step="any" class="form-control" id="milage" placeholder="Enter milage in miles 4.5">
-				</div>
-				<div class="form-group">
-				<input name="hours" type="number" class="form-control" id="hours" placeholder="Enter time in hours">
-				<input name="minutes" type="number" class="form-control" id="minutes" placeholder="Enter time in minutes">
-				<input name="seconds" type="number" class="form-control" id="seconds" placeholder="Enter time in seconds">
-				</div>
-			  <div class="checkbox">
-				<label>
-				<input name="stars" type="checkbox" id="stars" value="1"> 
-				I completed a goal</label>
-				</div>
-				<p class="help-block">You receive 1 star for every mile you log, and each goal you complete.</p>
-				<button type="submit" name="submit" value="logtrain" class="btn btn-default">Submit Training</button>
-			</form>
-		</div>
-		<hr>
 		<h2>SCORE BOARD</h2>
 		<div class=result> </div>
 		<p>&nbsp;</p>
@@ -128,27 +74,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
  	<script type="text/javascript" charset="utf-8">
-		$( "#goals1" ).click(function() {
-		$( "#showgoals" ).toggle( "slow", function() {
-		// Animation complete.
-		});
-		});		
-
-		$( "#goals2" ).click(function() {
-		$( "#removeg" ).toggle( "slow", function() {
-		// Animation complete.
-		});
-		$.get( "http://palisades10k.com/app/goalremove.php", { myuuid: deviceID }, function( data ) {
-		$( ".resultgmove" ).html( data );
-		alert( "Load was performed." );
-		});
-		});		
-
-		$( "#train1" ).click(function() {
-		$( "#logt" ).toggle( "slow", function() {
-		// Animation complete.
-		});
-		});		
 
 	document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -162,7 +87,6 @@
 		//alert( "Load was performed." );
 		});
 		
-
 	}	
 	</script>
   </body>
