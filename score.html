@@ -128,6 +128,19 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
  	<script type="text/javascript" charset="utf-8">
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
+		//alert("success! " +deviceID);	
+
+		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
+		$( ".result" ).html( data );
+		//alert( "Load was performed." );
+		});
+
 		$( "#goals1" ).click(function() {
 		$( "#showgoals" ).toggle( "slow", function() {
 		// Animation complete.
@@ -149,18 +162,6 @@
 		// Animation complete.
 		});
 		});		
-
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-	function onDeviceReady() {
-		console.log(device.cordova);
-		var deviceID = device.uuid;
-		//alert("success! " +deviceID);	
-
-		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
-		$( ".result" ).html( data );
-		//alert( "Load was performed." );
-		});
 		
 
 	}	
