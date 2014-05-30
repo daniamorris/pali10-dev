@@ -16,6 +16,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<script>window.location.reload(true);</script>
   </head>
   <body>
 
@@ -146,7 +147,6 @@
 		$( "#showgoals" ).toggle( "slow", function() {
 		// Animation complete.
 		});
-		$( ".form-group" ).append( "<p>Test</p>" );
 		});		
 
 		$( "#goals2" ).click(function() {
@@ -155,7 +155,7 @@
 		});
 		$.get( "http://palisades10k.com/app/goalremove.php", { myuuid: deviceID }, function( data ) {
 		$( ".resultgmove" ).html( data );
-		alert( "Load was performed." );
+		//alert( "Load was performed." );
 		});
 		});		
 
@@ -165,7 +165,6 @@
 		});
 		});		
 		
-
 	}	
 	</script>
   </body>
