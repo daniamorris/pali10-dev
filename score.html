@@ -51,7 +51,7 @@
 		<div id="showgoals" style="display: none">
 			<h2>Set Goals</h2>
 			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals" id="mygoals" role="form">
-			
+			<input type="hidden" name="myuuid">
 			  <div class="form-group">
 				<select name="goals" class="form-control" id="goals">
 				<option>Train this many miles by race day:</option>
@@ -135,6 +135,7 @@
 		console.log(device.cordova);
 		var deviceID = device.uuid;
 		//alert("success! " +deviceID);	
+		$('input[name="myuuid"]').val(deviceID);
 
 		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
@@ -145,7 +146,7 @@
 		$( "#showgoals" ).toggle( "slow", function() {
 		// Animation complete.
 		});
-		$( ".form-group" ).append( '<input type="hidden" name="myuuid">' );
+		$( ".form-group" ).append( "<p>Test</p>" );
 		});		
 
 		$( "#goals2" ).click(function() {
