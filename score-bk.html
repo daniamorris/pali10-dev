@@ -48,7 +48,6 @@
 		<button id="goals2" type="button" class="btn btn-primary btn-lg btn-block">Remove Goals</button>
 		<button id="train1" type="button" class="btn btn-primary btn-lg btn-block">Log Training</button>
 		</p>
-		<div class=talkback></div>
 		<div id="showgoals" style="display: none">
 			<h2>Set Goals</h2>
 			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals" id="mygoals" role="form">
@@ -165,51 +164,6 @@
 		});
 		});		
 		
-		$("#mygoals").submit(function() {
-			var url = "http://palisades10k.com/app/goalsdata2.php?submit=insertgoals";
-			$.ajax({
-				   type: "GET",
-				   url: url,
-				   data: $("#mygoals").serialize(),
-				   success: function(data)
-				   {
-					   $( ".talkback" ).html( data );
-					   $('#mygoals')[0].reset();
-				   }
-				 });
-			return false;
-		});
-
-		$("#mygoals2").submit(function() {
-			var url = "http://palisades10k.com/app/goalsdata2.php?submit=removegoals";
-			$.ajax({
-				   type: "GET",
-				   url: url,
-				   data: $("#mygoals2").serialize(),
-				   success: function(data)
-				   {
-					   $( ".talkback" ).html( data );
-					   $('#mygoals2')[0].reset();
-				   }
-				 });
-			return false;
-		});
-
-		$("#mylog").submit(function() {
-			var url = "http://palisades10k.com/app/goalsdata2.php?submit=logtrain";
-			$.ajax({
-				   type: "GET",
-				   url: url,
-				   data: $("#mylog").serialize(),
-				   success: function(data)
-				   {
-					   $( ".talkback" ).html( data );
-					   $('#mylog')[0].reset();
-				   }
-				 });
-			return false;
-		});
-
 	}	
 	</script>
   </body>
