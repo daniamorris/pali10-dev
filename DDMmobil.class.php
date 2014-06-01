@@ -258,6 +258,62 @@ class DDMmobil
 
   }
 
+   public function getevents($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT * FROM  events WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+      $b = 1;
+      echo '<p><b>Your Events</b></p>';
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$b++; 
+		}
+
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+
+  }
+
+   public function allevents($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT * FROM  events WHERE uuid!=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+      $b = 1;
+      echo '<p><b>Other Events</b></p>';
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$b++; 
+		}
+
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+
+  }
+
 
 }
 

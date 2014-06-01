@@ -45,7 +45,7 @@ if (isset($_GET['submit']) && $_GET['submit'] == 'removegoals') {
 		$DDMdata->removegoals2($mygoal);
 	}
 	echo 'Your goal was removed';
-	include 'index.html';
+	//include 'index.html';
 }
 
 ?>

@@ -44,11 +44,15 @@
 
       <div class="starter-template">
 		<p>
+		<button id="scoreb" type="button" class="btn btn-primary btn-lg btn-block">Score Board</button>
 		<button id="goals1" type="button" class="btn btn-primary btn-lg btn-block">Set Goals</button>
 		<button id="goals2" type="button" class="btn btn-primary btn-lg btn-block">Remove Goals</button>
 		<button id="train1" type="button" class="btn btn-primary btn-lg btn-block">Log Training</button>
 		</p>
 		<div class=talkback></div>
+		<div class="result" id="scoreme" style="display: none">
+			<h2>SCORE BOARD</h2>
+		</div>
 		<div id="showgoals" style="display: none">
 			<h2>Set Goals</h2>
 			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mygoals" id="mygoals" role="form">
@@ -103,8 +107,6 @@
 			</form>
 		</div>
 		<hr>
-		<h2>SCORE BOARD</h2>
-		<div class=result> </div>
 		<p>&nbsp;</p>
 		<p align="center"><img src="race-images/_MG_0455.jpg" height="133" width="200" class="img-thumbnail" alt="July 4th" /> <img src="race-images/_MG_0432.jpg" class="img-thumbnail" height="133" width="200" alt="Palisades Will Rogers" /> <img src="race-images/_MG_0563.jpg" height="133" width="200" class="img-thumbnail" alt="5k 10k Run" /></p>
      </div>
@@ -137,11 +139,21 @@
 		var deviceID = device.uuid;
 		//alert("success! " +deviceID);	
 		$('input[name="myuuid"]').val(deviceID);
-
+/*
 		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
 		//alert( "Load was performed." );
 		});
+*/
+		$( "#scoreb" ).click(function() {
+		$( "#scoreme" ).toggle( "slow", function() {
+		// Animation complete.
+		});
+		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
+		$( ".result" ).html( data );
+		//alert( "Load was performed." );
+		});
+		});		
 
 		$( "#goals1" ).click(function() {
 		$( "#showgoals" ).toggle( "slow", function() {
