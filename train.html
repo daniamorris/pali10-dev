@@ -139,6 +139,10 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
  	<script type="text/javascript" charset="utf-8">
 
+		$( "button" ).click(function() {
+		$( ".talkback" ).empty();
+		});
+
 		$( "#trainview" ).click(function() {
 		$( "#viewev" ).toggle( "slow", function() {
 		// Animation complete.
