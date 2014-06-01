@@ -148,6 +148,7 @@
 		$( "#scoreb" ).click(function() {
 		$( "#scoreme" ).toggle( "slow", function() {
 		// Animation complete.
+		$( ".talkback" ).reset();
 		});
 		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
