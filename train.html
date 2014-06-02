@@ -147,10 +147,11 @@
 		$( "#viewev" ).toggle( "slow", function() {
 		// Animation complete.
 		});
-		$.get( "http://palisades10k.com/app/viewingevents.php", { myuuid: deviceID }, function( data ) {
+		$.get( "http://palisades10k.com/app/viewingevents.php?myuuid=b710c14d6a29be70", function( data ) {
+//		$.get( "http://palisades10k.com/app/viewingevents.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
 		//alert( "Load was performed." );
-		});	
+		});
 		});		
 
 		$( "#train2" ).click(function() {
@@ -165,6 +166,7 @@
 		});
 		});		
 
+/*
 		$( "#logstart" ).click(function() {
 		//$( "#logging" ).toggle( "slow", function() {
 		// Animation complete.
@@ -185,7 +187,7 @@
 		//});
 		alert( "we are stopping." );
 		});		
-
+*/
 		$("#trainevent").submit(function() {
 			var url = "http://palisades10k.com/app/goalsdata2.php?submit=trainevent"; 
 			$.ajax({
