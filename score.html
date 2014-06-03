@@ -144,34 +144,40 @@
 		});
 
 		$( "#scoreb" ).click(function() {
+		$('#showgoals').css( "display", "none" );
+		$('#removeg').css( "display", "none" );
+		$('#logt').css( "display", "none" );
 		$( "#scoreme" ).toggle( "slow", function() {
-		// Animation complete.
 		});
 		$.get( "http://palisades10k.com/app/scoreboard2.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
-		//alert( "Load was performed." );
 		});
 		});		
 
 		$( "#goals1" ).click(function() {
+		$('#scoreme').css( "display", "none" );
+		$('#removeg').css( "display", "none" );
+		$('#logt').css( "display", "none" );
 		$( "#showgoals" ).toggle( "slow", function() {
-		// Animation complete.
 		});
 		});		
 
 		$( "#goals2" ).click(function() {
+		$('#showgoals').css( "display", "none" );
+		$('#scoreme').css( "display", "none" );
+		$('#logt').css( "display", "none" );
 		$( "#removeg" ).toggle( "slow", function() {
-		// Animation complete.
 		});
 		$.get( "http://palisades10k.com/app/goalremove.php", { myuuid: deviceID }, function( data ) {
 		$( ".resultgmove" ).html( data );
-		//alert( "Load was performed." );
 		});
 		});		
 
 		$( "#train1" ).click(function() {
+		$('#showgoals').css( "display", "none" );
+		$('#removeg').css( "display", "none" );
+		$('#scoreme').css( "display", "none" );
 		$( "#logt" ).toggle( "slow", function() {
-		// Animation complete.
 		});
 		});		
 		
