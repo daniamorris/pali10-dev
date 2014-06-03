@@ -314,6 +314,58 @@ class DDMmobil
 
   }
 
+   public function removeEvent($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT * FROM events WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+      $b = 1;
+      echo '<p><b>Events</b></p>';
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Event $b:</b> %s %s %s %s</p>", $row["id"], $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$b++; 
+		}
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+    }
+
+   public function removeEvent2($id)
+  {
+
+    try
+    {
+      $sql = "DELETE FROM events WHERE id=:id";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':id', $id);
+      $stmt->execute();
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
 
 }
 

@@ -10,8 +10,5 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
 }
 $DDMdata = new DDMmobil($dbh);
-echo "<h2>Score Board</h2>";
-$DDMdata->starcount($myuuid);
-$DDMdata->milage($myuuid);
-$DDMdata->viewgoals($myuuid);
+$DDMdata->removeEvent($myuuid);
 ?>

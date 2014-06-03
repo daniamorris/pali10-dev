@@ -45,8 +45,9 @@
       <div class="starter-template">
 		<p>
 		<button id="trainview" type="button" class="btn btn-primary btn-lg btn-block">View Events</button>
-		<button id="train2" type="button" class="btn btn-primary btn-lg btn-block">Create Training Event</button>
-		<button id="train3" type="button" class="btn btn-primary btn-lg btn-block">Log a Run</button>
+		<button id="train2" type="button" class="btn btn-primary btn-lg btn-block">Create Event</button>
+		<button id="train3" type="button" class="btn btn-primary btn-lg btn-block">Delete Event</button>
+		<a href="running.html" class="btn btn-primary btn-lg btn-block" role="button">Log a Run</a>
 		</p>
 		<div class=talkback></div>
 		<div id="viewev" style="display: none">
@@ -67,55 +68,33 @@
 					<option>Other:</option>
 					</select>
 				</div>
-				<div class="input-group">
-					<span class="input-group-addon">notes</span>
+				<p><div class="input-group">
+					<span class="input-group-addon">What:</span>
 					<textarea name="moreinfo" class="form-control" rows="3"></textarea>
-				</div>
-				<p>&nbsp;</p>
-				<div class="form-group">
+				</div></p>
+				<p><div class="input-group">
+				<span class="input-group-addon">When:</span>
 					<input name="date" type="datetime" class="form-control" id="date" placeholder="Enter time in datetime format 1:23:40">
-				</div>
+				</div></p>
 				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+					<span class="input-group-addon">Where:</span>
 					<input type="text" class="form-control" name="location" placeholder="Enter your meeting spot">
 				</div>
 				<p>&nbsp;</p>
 				<button type="submit" name="submit" value="trainevent" class="btn btn-default">Submit Training Event</button>
 			</form>
 		</div>
-		<div id="logging" style="display: none">
-			<h2>Log a Run</h2>
-				<button id="logstart" type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-play"></span> Start</button>
-				<button id="pausing" type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-pause"></span> Pause</button>
-				<button id="stopping" type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-stop"></span> Stop</button>
-			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="mylog" id="mylog" role="form">
-				<input type="hidden" name="myuuid">
-				<div class="form-group">
-				<input name="milage" type="text" step="any" class="form-control" id="milage" placeholder="Enter milage in miles 4.5">
-				</div>
-				<div class="form-group">
-				<input name="hours" type="number" class="form-control" id="hours" placeholder="Enter time in hours">
-				<input name="minutes" type="number" class="form-control" id="minutes" placeholder="Enter time in minutes">
-				<input name="seconds" type="number" class="form-control" id="seconds" placeholder="Enter time in seconds">
-				</div>
-			  <div class="checkbox">
-				<label>
-				<input name="stars" type="checkbox" id="stars" value="1"> 
-				I completed a goal</label>
-				</div>
-				<p class="help-block">You receive 1 star for every mile you log, and each goal you complete.</p>
-				<button type="submit" name="submit" value="logtrain" class="btn btn-default">Submit Training</button>
+		<div id="delvent" style="display: none">
+			<h2>Delete Event</h2>
+			<p>Select the checkbox and click the Delete button to remove events.</p>
+			<form action="http://palisades10k.com/app/goalsdata2.php" method="get" name="trainevent2" id="trainevent2" role="form">
+			<input type="hidden" name="myuuid">
+			<div class=evemove></div>
+				<p>&nbsp;</p>
+				<button type="submit" name="submit" value="removeevents" class="btn btn-default">Delete Selected Events</button>
 			</form>
 		</div>
 		<hr>
-		<p>&nbsp;</p>
-		<p>
-		<a href="running.html" class="btn btn-primary btn-lg btn-block" role="button">Log a Run old</a>
-		</p>
-		<p align="center"><img src="race-images/_MG_0455.jpg" height="133" width="200" class="img-thumbnail" alt="July 4th" /> <img src="race-images/_MG_0432.jpg" class="img-thumbnail" height="133" width="200" alt="Palisades Will Rogers" /> <img src="race-images/_MG_0563.jpg" height="133" width="200" class="img-thumbnail" alt="5k 10k Run" /></p>
 		<p align="center"><img src="img/logo.png" alt="palisades10k" width="170" height="200"></p>
      </div>
 
@@ -139,55 +118,47 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
  	<script type="text/javascript" charset="utf-8">
 
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		console.log(device.cordova);
+		var deviceID = device.uuid;
+		//alert("success! " +deviceID);
+		$('input[name="myuuid"]').val(deviceID);
+
 		$( "button" ).click(function() {
 		$( ".talkback" ).empty();
 		});
 
 		$( "#trainview" ).click(function() {
+		$('#tevent').css( "display", "none" );
+		$('#delvent').css( "display", "none" );
 		$( "#viewev" ).toggle( "slow", function() {
-		// Animation complete.
 		});
-		$.get( "http://palisades10k.com/app/viewingevents.php?myuuid=b710c14d6a29be70", function( data ) {
-//		$.get( "http://palisades10k.com/app/viewingevents.php", { myuuid: deviceID }, function( data ) {
+//		$.get( "http://palisades10k.com/app/viewingevents.php?myuuid=b710c14d6a29be70", function( data ) {
+		$.get( "http://palisades10k.com/app/viewingevents.php", { myuuid: deviceID }, function( data ) {
 		$( ".result" ).html( data );
-		//alert( "Load was performed." );
 		});
 		});		
 
 		$( "#train2" ).click(function() {
+		$('#viewev').css( "display", "none" );
+		$('#delvent').css( "display", "none" );
 		$( "#tevent" ).toggle( "slow", function() {
-		// Animation complete.
 		});
 		});		
 
 		$( "#train3" ).click(function() {
-		$( "#logging" ).toggle( "slow", function() {
-		// Animation complete.
+		$('#tevent').css( "display", "none" );
+		$('#viewev').css( "display", "none" );
+		$( "#delvent" ).toggle( "slow", function() {
+		});
+//		$.get( "http://palisades10k.com/app/eventremove.php?myuuid=b710c14d6a29be70", function( data ) {
+		$.get( "http://palisades10k.com/app/eventremove.php", { myuuid: deviceID }, function( data ) {
+		$( ".evemove" ).html( data );
 		});
 		});		
 
-/*
-		$( "#logstart" ).click(function() {
-		//$( "#logging" ).toggle( "slow", function() {
-		// Animation complete.
-		//});
-		alert( "we are starting." );
-		});		
-
-		$( "#pausing" ).click(function() {
-		//$( "#logging" ).toggle( "slow", function() {
-		// Animation complete.
-		//});
-		alert( "we are paused." );
-		});		
-
-		$( "#stopping" ).click(function() {
-		//$( "#logging" ).toggle( "slow", function() {
-		// Animation complete.
-		//});
-		alert( "we are stopping." );
-		});		
-*/
 		$("#trainevent").submit(function() {
 			var url = "http://palisades10k.com/app/goalsdata2.php?submit=trainevent"; 
 			$.ajax({
@@ -203,14 +174,21 @@
 			return false;
 		});
 
+		$("#trainevent2").submit(function() {
+			var url = "http://palisades10k.com/app/goalsdata2.php?submit=removeevents";
+			$.ajax({
+				   type: "GET",
+				   url: url,
+				   data: $("#trainevent2").serialize(),
+				   success: function(data)
+				   {
+					   $( ".talkback" ).html( data );
+					   $('#trainevent2')[0].reset();
+				   }
+				 });
+			return false;
+		});
 
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-	function onDeviceReady() {
-		console.log(device.cordova);
-		var deviceID = device.uuid;
-		//alert("success! " +deviceID);
-		$('input[name="myuuid"]').val(deviceID);
 		
 
 	}

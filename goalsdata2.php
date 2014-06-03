@@ -48,4 +48,14 @@ if (isset($_GET['submit']) && $_GET['submit'] == 'removegoals') {
 	//include 'index.html';
 }
 
+//insert event http://palisades10k.com/app/train.html
+if (isset($_GET['submit']) && $_GET['submit'] == 'removeevents') {
+	foreach ($id as $mygoal) {
+		$DDMdata->removeEvent2($mygoal);
+	}
+	echo 'Your event was removed';
+	//include 'index.html';
+}
+
+
 ?>
