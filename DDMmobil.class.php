@@ -92,6 +92,44 @@ class DDMmobil
 
   }
 
+   public function timetot($myuuid)
+  {
+
+    try
+    {
+      $sql = "SELECT SUM(hours), SUM(minutes), SUM(seconds) FROM mytraining WHERE uuid=:myuuid";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      	$myhours = $row["SUM(hours)"];
+      	$mins = $row["SUM(minutes)"];
+      	$secs = $row["SUM(seconds)"];
+      	$minutes = ($myhours * 60) + $mins;
+      	//echo $minutes;
+      	$therest = date('H', mktime(0,$minutes,$secs));
+      	$therest2 = date('i', mktime(0,$minutes,$secs));
+      	$therest3 = date('s', mktime(0,$minutes,$secs));
+      	$d = floor ($minutes / 1440);
+      	$dayhours = ($d * 24) + $therest;
+      	//echo "{$minutes}min converts to {$d}days";
+      	echo "<p><b>Total time:</b> {$dayhours} hours $therest2 minutes $therest3 seconds</p>";
+		//printf("<p><b>Total time:</b> %s hours %s minutes %s seconds</p>", $row["SUM(hours)"], $row["SUM(minutes)"], $row["SUM(seconds)"]);
+		}
+		
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
    public function setgoal($myuuid, $goals, $notes)
   {
 
@@ -270,7 +308,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Your Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'l F jS \a\t g:ia');
+		printf("<p><b>Date:</b> $datef<br><b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["location"], $row["details"], $row["moreinfo"]);
 		$b++; 
 		}
 
@@ -298,7 +338,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Other Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><b>Date:</b> %s <b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'l F jS \a\t g:ia');
+		printf("<p><b>Date:</b> $datef<br><b>Location:</b> %s<br><b>Details:</b> %s %s</p>", $row["location"], $row["details"], $row["moreinfo"]);
 		$b++; 
 		}
 
@@ -326,7 +368,9 @@ class DDMmobil
       $b = 1;
       echo '<p><b>Events</b></p>';
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Event $b:</b> %s %s %s %s</p>", $row["id"], $row["date"], $row["location"], $row["details"], $row["moreinfo"]);
+		$mydate = date_create($row["date"]);
+		$datef = date_format($mydate, 'm/d/y g:ia');
+		printf("<p><input name='id[]' type='checkbox' value='%s'><b>&nbsp; Delete Event $b:</b> $datef <br>%s - %s</p>", $row["id"], $row["location"], $row["details"]);
 		$b++; 
 		}
 		
