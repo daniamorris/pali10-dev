@@ -410,6 +410,31 @@ class DDMmobil
 
   }
 
+   public function insertarun($myuuid, $morepath)
+  {
+
+    try
+    {
+      $sql = "INSERT INTO myruns (id,uuid,runarray) VALUES (NULL, :myuuid, :morepath)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':myuuid', $myuuid);
+      $stmt->bindParam(':morepath', $morepath);
+      $stmt->execute();
+		echo '<div class="container"><h3 class="center-block">Your run has been added!</h3></div>';
+    }
+    
+	catch (PDOException $e)
+	{
+  	echo 'PDO Exception Caught.  ';
+  	echo 'Error with the database: <br />';
+  	echo 'SQL Query: ', $sql;
+  	echo 'Error: ' . $e->getMessage();
+	}
+	echo '<div class="clear"> </div>';
+
+  }
+
+
 
 }
 
